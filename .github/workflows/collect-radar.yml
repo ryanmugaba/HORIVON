@@ -1,0 +1,22 @@
+name: HORIVON Radar Collection
+
+on:
+  schedule:
+    - cron: '0 16 * * *' # 2am AEST daily
+
+jobs:
+  collect-radar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call ABS cron endpoint
+        run: |
+          curl -H "Authorization: Bearer $${{ secrets.RADAR_API_KEY }}" https://your-deployment-url/api/cron/abs
+      - name: Call RBA cron endpoint
+        run: |
+          curl -H "Authorization: Bearer $${{ secrets.RADAR_API_KEY }}" https://your-deployment-url/api/cron/rba
+      - name: Call flights cron endpoint
+        run: |
+          curl -H "Authorization: Bearer $${{ secrets.RADAR_API_KEY }}" https://your-deployment-url/api/cron/flights
+      - name: Call port cron endpoint
+        run: |
+          curl -H "Authorization: Bearer $${{ secrets.RADAR_API_KEY }}" https://your-deployment-url/api/cron/port

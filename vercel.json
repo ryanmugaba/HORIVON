@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/**/*.ts": {
+      "region": "au-southeast"
+    },
+    "app/api/**/*.ts": {
+      "region": "au-southeast"
+    }
+  }
+}
